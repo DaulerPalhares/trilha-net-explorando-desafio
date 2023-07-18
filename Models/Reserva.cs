@@ -15,6 +15,9 @@ namespace DesafioProjetoHospedagem.Models
 
     public void CadastrarHospedes(List<Pessoa> hospedes)
     {
+      if(hospedes?.Count == 0){
+        throw new Exception("Favor informar a quantidade de hospedes");
+      }
       if (Suite != null)
       {
         if (Suite.Capacidade >= hospedes.Count)
@@ -35,7 +38,7 @@ namespace DesafioProjetoHospedagem.Models
 
     public int ObterQuantidadeHospedes()
     {
-      return Hospedes.Count;
+      return Hospedes?.Count ?? 0;
     }
 
     public decimal CalcularValorDiaria()
